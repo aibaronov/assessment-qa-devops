@@ -9,7 +9,7 @@ describe('shuffleArray should', () => {
         expect(resultType).toBeTruthy();
     }),
 
-    test("Return the same items in the new array", () =>{
+    test("Return an array of the same length", () =>{
         let testArray = [1,2,3,4,5];
         let shuffleTest = shuffleArray(testArray);
         let sameLength = true;
