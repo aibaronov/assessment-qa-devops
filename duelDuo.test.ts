@@ -21,26 +21,42 @@ test('Title shows up when page loads', async () => {
     await driver.sleep(5000);
 })
 
-test('Wins are initialized to zero when the page loads', async () => {
-    const winsAmount = await driver.findElement(By.id('wins')).getText();
-    console.log(winsAmount);
-    expect(winsAmount).toBe('Wins: 0')
-    await driver.sleep(5000);
-})
+// test('Wins are initialized to zero when the page loads', async () => {
+//     const winsAmount = await driver.findElement(By.id('wins')).getText();
+//     console.log(winsAmount);
+//     expect(winsAmount).toBe('Wins: 0')
+//     await driver.sleep(5000);
+// })
 
-test('Draw button displays div with id="choices"', async ()=>{
+// test('Draw button displays div with id="choices"', async ()=>{
+//     let drawBtn = await driver.findElement(By.id('draw'))
+//     await drawBtn.click();
+//     driver.sleep(5000);
+
+//     const findDiv = await driver.findElement(By.id('choices'));
+//     const displayedBoolean = await findDiv.isDisplayed();
+//     console.log(`Displayed results: ${displayedBoolean}`)
+
+//     expect(displayedBoolean).toBe(true);
+//     //let the driver wait before next test
+//     await driver.sleep(5000);
+// })
+
+test("Clicking the 'Add to Duo' button displays the div with id = 'player-duo'", async () =>{
     let drawBtn = await driver.findElement(By.id('draw'))
     await drawBtn.click();
     driver.sleep(5000);
 
-    const findDiv = await driver.findElement(By.id('choices'));
-    const displayedBoolean = await findDiv.isDisplayed();
-    console.log(`Displayed results: ${displayedBoolean}`)
+    let addDuoBtn = await driver.findElement(By.xpath('//button[contains(text(), "Add to Duo")][1]'));
+    addDuoBtn.click();
+    await driver.sleep(3000);
 
+    let playerDuoDiv = await driver.findElement(By.id('player-duo'));
+    let displayedBoolean = await playerDuoDiv.isDisplayed();
     expect(displayedBoolean).toBe(true);
-    //let the driver wait before next test
-    await driver.sleep(5000);
 })
+
+
 
 
 test ("Make sure all bots appear when all bots button is clicked", async() => {
@@ -57,5 +73,4 @@ test ("Make sure all bots appear when all bots button is clicked", async() => {
     await driver.sleep(5000);
 
 })
-
 
