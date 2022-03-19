@@ -33,7 +33,7 @@ app.get("/styles", (req, res)=>{
 app.get('/api/robots', (req, res) => {
     try {
         rollbar.log("Bots retrieved");
-        res.status(200).send(botsArr)
+        res.status(200).send(bots)
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
         rollbar.error("Could not retrieve bots");
